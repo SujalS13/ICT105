@@ -14,7 +14,7 @@ Correct answer: a
 
 3. What is the largest planet in our solar system?
 a) Earth
-b) Mars
+b) Sun
 c) Jupiter
 d) Saturn
 Correct answer: c
