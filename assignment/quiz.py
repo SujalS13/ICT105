@@ -16,7 +16,7 @@ for line in content.split("\n"):
         question = line
 questions.append(question)
 
-# Select 10 random questions
+# Select 10 random questions from set of 50 question
 selected_questions = random.sample(questions, 10)
 
 # Play the game
