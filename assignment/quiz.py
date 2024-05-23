@@ -1,6 +1,6 @@
 import random
 
-# Load the questions and answers from the file
+#questions and answers from the file imported
 with open("quiz_question.txt", "r") as f:
     content = f.read()
 
