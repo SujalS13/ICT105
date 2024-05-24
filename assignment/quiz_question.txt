@@ -1,9 +1,9 @@
 1. What is the capital of France?
 a) Berlin
 b) Madrid
-c) Paris
-d) Rome
-Correct answer: c
+c) Rome
+d) Paris
+Correct answer: d
 
 2. Who wrote "To Kill a Mockingbird"?
 a) Harper Lee
@@ -14,7 +14,7 @@ Correct answer: a
 
 3. What is the largest planet in our solar system?
 a) Earth
-b) Mars
+b) Sun
 c) Jupiter
 d) Saturn
 Correct answer: c
