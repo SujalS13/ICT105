@@ -6,7 +6,7 @@ from tkinter import messagebox
 class QuizApp:
     def __init__(self, master, questions):
         self.master = master
-        self.questions = random.sample(questions, 10)  # Select 10 random questions
+        self.questions = random.sample(questions, 10)  
         self.score = 0
         self.current_question_index = 0
 
@@ -27,9 +27,7 @@ class QuizApp:
 
         self.try_again_button = tk.Button(master, text="Try Again", command=self.try_again, font=("Helvetica", 16))
         self.try_again_button.pack()
-        self.try_again_button.pack_forget()  # Initially hide the Try Again button
-
-        self.next_question()
+        self.try_again_button.pack_forget()          self.next_question()
 
     def next_question(self):
         if self.current_question_index < len(self.questions):
@@ -40,7 +38,7 @@ class QuizApp:
             self.status_label.config(text=f"Question {self.current_question_index + 1}/{len(self.questions)}")
         else:
             messagebox.showinfo("Quiz Finished", f"Your final score is {self.score}/{len(self.questions)}")
-            self.try_again_button.pack()  # Show the "Try Again" button
+            self.try_again_button.pack()  
 
     def answer_question(self, selected_option):
         question_data = self.questions[self.current_question_index]
@@ -80,7 +78,7 @@ def main():
         questions = read_questions_from_file(file_path)
         root = tk.Tk()
         root.title("Quiz App")
-        root.attributes('-fullscreen', True)  # Set full-screen mode
+        root.attributes('-fullscreen', True) 
         app = QuizApp(root, questions)
         root.mainloop()
     except FileNotFoundError:
