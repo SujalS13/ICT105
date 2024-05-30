@@ -1,3 +1,5 @@
+import random
+
 def read_questions_from_file(filename):
     with open(filename, 'r') as file:
         content = file.read()
@@ -27,13 +29,17 @@ def ask_question(question_data):
 
 def run_quiz(questions):
     score = 0
-    for question_data in questions:
+    for i, question_data in enumerate(random.sample(questions, 10)):
+        print(f"\nQuestion {i+1}:")
         correct, correct_text = ask_question(question_data)
         if correct:
             print("Correct!")
             score += 1
         else:
             print(f"Wrong! The correct answer was {correct_text}")
+        print(f"Your current score is {score}/{i+1}")
+        if input("Do you want to continue? (yes/no) ").strip().lower() != 'yes':
+            break
     print(f"Your final score is {score}/{len(questions)}")
 
 if __name__ == "__main__":
