@@ -27,7 +27,8 @@ class QuizApp:
 
         self.try_again_button = tk.Button(master, text="Try Again", command=self.try_again, font=("Helvetica", 16))
         self.try_again_button.pack()
-        self.try_again_button.pack_forget()          self.next_question()
+        self.try_again_button.pack_forget()        
+        self.next_question()
 
     def next_question(self):
         if self.current_question_index < len(self.questions):
