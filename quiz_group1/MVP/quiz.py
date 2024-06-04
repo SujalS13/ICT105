@@ -27,7 +27,13 @@ class QuizApp:
 
         self.try_again_button = tk.Button(master, text="Try Again", command=self.try_again, font=("Helvetica", 16))
         self.try_again_button.pack()
-        self.try_again_button.pack_forget()        
+        self.try_again_button.pack_forget()     
+
+        self.time_left = 30  # 30 seconds for each question
+        self.timer_label = tk.Label(master, text=f"Time left: {self.time_left}s", font=("Helvetica", 16))
+        self.timer_label.pack()
+        self.update_timer()
+   
         self.next_question()
 
     def next_question(self):
@@ -60,6 +66,16 @@ class QuizApp:
             correct_option_index = ord(question_data['answer']) - ord('a')
             correct_answer = question_data['options'][correct_option_index]
             messagebox.showinfo("Result", f"Incorrect! The correct answer is: {correct_answer}")
+
+    def update_timer(self):
+        if self.time_left > 0:
+            self.time_left -= 1
+            self.timer_label.config(text=f"Time left: {self.time_left}s")
+            self.master.after(1000, self.update_timer)
+        else:
+            self.show_answer_result(False)
+            self.current_question_index += 1
+            self.next_question()
 
 
     def quit_quiz(self):
