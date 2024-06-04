@@ -46,8 +46,21 @@ class QuizApp:
         correct_option_index = ord(question_data['answer']) - ord('a')
         if selected_option == correct_option_index:
             self.score += 1
+            self.show_answer_result(True)
+        else:
+            self.show_answer_result(False)
         self.current_question_index += 1
         self.next_question()
+  
+    def show_answer_result(self, is_correct):
+        if is_correct:
+            messagebox.showinfo("Result", "Correct!")
+        else:
+            question_data = self.questions[self.current_question_index]
+            correct_option_index = ord(question_data['answer']) - ord('a')
+            correct_answer = question_data['options'][correct_option_index]
+            messagebox.showinfo("Result", f"Incorrect! The correct answer is: {correct_answer}")
+
 
     def quit_quiz(self):
         self.master.destroy()
