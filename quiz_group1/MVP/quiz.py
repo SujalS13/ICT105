@@ -1,4 +1,3 @@
-
 import random
 import tkinter as tk
 from tkinter import messagebox
@@ -43,6 +42,8 @@ class QuizApp:
             for i, option in enumerate(question_data['options']):
                 self.option_buttons[i].config(text=option)
             self.status_label.config(text=f"Question {self.current_question_index + 1}/{len(self.questions)}")
+            self.time_left = 30  # Reset the timer for each question
+            self.timer_label.config(text=f"Time left: {self.time_left}s")
         else:
             messagebox.showinfo("Quiz Finished", f"Your final score is {self.score}/{len(self.questions)}")
             self.try_again_button.pack()  
@@ -62,7 +63,7 @@ class QuizApp:
         if is_correct:
             messagebox.showinfo("Result", "Correct!")
         else:
-            question_data = self.questions[self.current_question_index]
+            question_data = self.questions[self.current_question_index - 1]
             correct_option_index = ord(question_data['answer']) - ord('a')
             correct_answer = question_data['options'][correct_option_index]
             messagebox.showinfo("Result", f"Incorrect! The correct answer is: {correct_answer}")
