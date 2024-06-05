@@ -5,7 +5,7 @@ from tkinter import messagebox
 class QuizApp:
     def __init__(self, master, questions):
         self.master = master
-        self.questions = random.sample(questions, 10)
+        self.questions = random.sample(questions, 10)  
         self.score = 0
         self.current_question_index = 0
 
@@ -26,13 +26,13 @@ class QuizApp:
 
         self.try_again_button = tk.Button(master, text="Try Again", command=self.try_again, font=("Helvetica", 16))
         self.try_again_button.pack()
-        self.try_again_button.pack_forget()
+        self.try_again_button.pack_forget()     
 
         self.time_left = 30  # 30 seconds for each question
         self.timer_label = tk.Label(master, text=f"Time left: {self.time_left}s", font=("Helvetica", 16))
         self.timer_label.pack()
         self.update_timer()
-
+   
         self.next_question()
 
     def next_question(self):
@@ -46,7 +46,7 @@ class QuizApp:
             self.timer_label.config(text=f"Time left: {self.time_left}s")
         else:
             messagebox.showinfo("Quiz Finished", f"Your final score is {self.score}/{len(self.questions)}")
-            self.try_again_button.pack()
+            self.try_again_button.pack()  
 
     def answer_question(self, selected_option):
         question_data = self.questions[self.current_question_index]
@@ -58,7 +58,7 @@ class QuizApp:
             self.show_answer_result(False)
         self.current_question_index += 1
         self.next_question()
-
+  
     def show_answer_result(self, is_correct):
         if is_correct:
             messagebox.showinfo("Result", "Correct!")
@@ -70,4 +70,50 @@ class QuizApp:
 
     def update_timer(self):
         if self.time_left > 0:
-            self.time
+            self.time_left -= 1
+            self.timer_label.config(text=f"Time left: {self.time_left}s")
+            self.master.after(1000, self.update_timer)
+        else:
+            self.show_answer_result(False)
+            self.current_question_index += 1
+            self.next_question()
+
+
+    def quit_quiz(self):
+        self.master.destroy()
+
+    def try_again(self):
+        self.master.destroy()
+        main()
+
+def read_questions_from_file(filename):
+    with open(filename, 'r') as file:
+        content = file.read()
+    questions = content.split('\n\n')
+    parsed_questions = []
+    for question in questions:
+        lines = question.strip().split('\n')
+        question_text = lines[0]
+        options = lines[1:5]
+        correct_answer = lines[5].split(': ')[1].strip().lower()
+        parsed_questions.append({
+            'question': question_text,
+            'options': options,
+            'answer': correct_answer
+        })
+    return parsed_questions
+
+def main():
+    file_path = 'quiz_question.txt'
+    try:
+        questions = read_questions_from_file(file_path)
+        root = tk.Tk()
+        root.title("Quiz App")
+        root.attributes('-fullscreen', True) 
+        app = QuizApp(root, questions)
+        root.mainloop()
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' does not exist.")
+
+if __name__ == "__main__":
+    main()
