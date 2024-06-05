@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 class QuizApp:
-    def _init_(self, master, questions):
+    def __init__(self, master, questions):
         # Initialize the quiz app with a master window and a list of questions
         self.master = master
         self.questions = random.sample(questions, 10)  # Select 10 random questions from the list
