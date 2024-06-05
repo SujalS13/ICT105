@@ -14,7 +14,7 @@ class QuizApp:
 
         self.option_buttons = []
         for i in range(4):
-            button = tk.Button(master, text="", command=lambda idx=i: self.answer_question(idx), font=("Helvetica", 16), fg='white', bg='black')
+            button = tk.Button(master, text="", command=lambda idx=i: self.answer_question(idx), font=("Helvetica", 16), fg='0', bg='black')
             button.pack(fill=tk.BOTH, padx=20, pady=10)
             self.option_buttons.append(button)
 
