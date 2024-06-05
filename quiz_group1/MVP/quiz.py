@@ -9,12 +9,12 @@ class QuizApp:
         self.score = 0
         self.current_question_index = 0
 
-        self.question_label = tk.Label(master, wraplength=800, font=("Helvetica", 20), fg='black')
+        self.question_label = tk.Label(master, wraplength=800, font=("Helvetica", 20), fg='red')
         self.question_label.pack()
 
         self.option_buttons = []
         for i in range(4):
-            button = tk.Button(master, text="", command=lambda idx=i: self.answer_question(idx), font=("Helvetica", 16), fg='0', bg='black')
+            button = tk.Button(master, text="", command=lambda idx=i: self.answer_question(idx), font=("Helvetica", 16), fg='blue', bg='black')
             button.pack(fill=tk.BOTH, padx=20, pady=10)
             self.option_buttons.append(button)
 
