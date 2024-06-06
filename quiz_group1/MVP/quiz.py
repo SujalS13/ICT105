@@ -44,6 +44,7 @@ class QuizApp:
             self.status_label.config(text=f"Question {self.current_question_index + 1}/{len(self.questions)}")
             self.time_left = 30  # Reset the timer for each question
             self.timer_label.config(text=f"Time left: {self.time_left}s")
+            self.update_timer()
         else:
             messagebox.showinfo("Quiz Finished", f"Your final score is {self.score}/{len(self.questions)}")
             self.try_again_button.pack()  
