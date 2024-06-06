@@ -63,6 +63,7 @@ class QuizApp:
         if is_correct:
             messagebox.showinfo("Result", "Correct!")
         else:
+            question_data = self.questions[self.current_question_index]
             correct_option_index = ord(question_data['answer']) - ord('a')
             correct_answer = question_data['options'][correct_option_index]
             messagebox.showinfo("Result", f"Incorrect! The correct answer is: {correct_answer}")
