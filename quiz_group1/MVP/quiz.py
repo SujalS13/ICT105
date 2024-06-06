@@ -86,7 +86,6 @@ class QuizApp:
         if self.time_left > 0:
             self.time_left -= 1
             self.timer_label.config(text=f"Time left: {self.time_left}s")
-<<<<<<< HEAD
             self.master.after(1000, self.update_timer)
         else:
             # Time's up! Show the result and move to the next question
@@ -128,5 +127,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-=======
->>>>>>> 689ce996ccdb815b1a3234187a16d09ac1f7c0e8
