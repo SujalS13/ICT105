@@ -102,4 +102,4 @@ class QuizApp:
         # Decrement the time left and update the timer label
         if self.time_left > 0:
             self.time_left -= 1
-            self.timer_label.config(text=f"Time left: {self.time_left}s
+            self.timer_label.config(text=f"Time left: {self.time_left})
