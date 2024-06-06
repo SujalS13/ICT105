@@ -122,6 +122,8 @@ def main():
     # Main function to start the quiz application
     questions = read_questions_from_file('quiz_question.txt')
     root = tk.Tk()
+    root.attributes('-fullscreen', True)  # Set the window to full screen
+    root.bind("<Escape>", lambda event: root.attributes("-fullscreen", False))  # Bind the Escape key to exit full screen
     app = QuizApp(root, questions)
     root.mainloop()
 
