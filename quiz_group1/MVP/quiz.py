@@ -90,6 +90,7 @@ class QuizApp:
         else:
             # Time's up! Show the result and move to the next question
             self.show_answer_result(False)
+            self.update_timer()
 
     def quit_quiz(self):
         # Quit the quiz and close the window
