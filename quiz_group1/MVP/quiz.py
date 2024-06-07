@@ -98,6 +98,7 @@ class QuizApp:
     def try_again(self):
         # Restart the quiz
         self.master.destroy()
+        self.update_timer()
         main()
 
 def read_questions_from_file(filename):
