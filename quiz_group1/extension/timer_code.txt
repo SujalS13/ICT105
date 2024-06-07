@@ -1,0 +1,21 @@
+The timer code is responsible for displaying the time left for each question and updating it every second. Here's a breakdown of the code:
+
+self.time_left = 30: This line initializes the timer with 30 seconds for each question.
+
+self.timer_label = tk.Label(master, text=f"Time left: {self.time_left}s", font=("Helvetica", 16)): This line creates a label to display the timer text. The text is formatted as "Time left: Xs", where X is the current time left.
+
+self.update_timer(): This method is called to start the timer. It updates the timer label every second using the after method.
+
+def update_timer(self):: This method is responsible for updating the timer. It checks if the time left is greater than 0. If it is, it decrements the time left by 1 second and updates the timer label text. It then calls itself again after 1000 milliseconds (1 second) using the after method.
+
+if self.time_left > 0:: This line checks if the time left is greater than 0. If it is, the timer continues to update.
+
+self.time_left -= 1: This line decrements the time left by 1 second.
+
+self.timer_label.config(text=f"Time left: {self.time_left}s"): This line updates the timer label text with the new time left.
+
+self.master.after(1000, self.update_timer): This line calls the update_timer method again after 1000 milliseconds (1 second) using the after method.
+
+else:: If the time left is 0 or less, the timer stops and the show_answer_result method is called with False as an argument, indicating that the user ran out of time.
+
+The timer code ensures that the user has a limited amount of time to answer each question, adding an element of challenge and excitement to the quiz game
