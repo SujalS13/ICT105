@@ -104,8 +104,12 @@ class QuizApp:
 
 def read_questions_from_file(filename):
     # Read the questions from a file
+    try:
     with open(filename, 'r') as file:
         content = file.read()
+    except FileNotFOundError:
+        messagebox.showerror("Error",f"File{filename} not found.")
+        return []
     questions = content.strip().split('\n\n')
     parsed_questions = []
     for question in questions:
